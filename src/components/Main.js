@@ -4,7 +4,7 @@ export default function Main() {
 
     return (
         <div>
-            <h1>Hello World!</h1>
+            <h1>Login or Sign Up to get started!</h1>
         </div>
     )
 }
