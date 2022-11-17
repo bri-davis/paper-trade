@@ -1,8 +1,51 @@
+/* change the background color */
+/* change the background color */
+.navbar-custom {
+    background-color: #8080ff;
+}
+
+
+/* change the brand and text color */
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text {
+    color: white;
+    font-size: x-large;
+    font-family: 'Maison Neue', sans-serif;
+    font-weight: bold;
+
+
+}
+
+/* change the link color */
+.navbar-custom .navbar-nav .nav-link {
+    color: white;
+    font-size: large;
+    font-family: 'Maison Neue', sans-serif;
+    font-weight: bold;
+}
+
+/* change the color of active or hovered links */
+.navbar-custom .nav-item.active .nav-link,
+.navbar-custom .nav-item:focus .nav-link,
+.navbar-custom .nav-item:hover .nav-link {
+    color: pink;
+}
+
 .nav {
     display: flex;
     align-items: center;
     background-color: #8080ff;
     justify-content: space-between;
+    position:absolute;
+    left:0;
+    top:0;
+}
+
+.nav-item {
+    color: white;
+}
+.me-auto {
+    color: white;
 }
 
 .nav > img {
