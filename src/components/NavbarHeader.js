@@ -3,10 +3,10 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import About from './pages/About';
-import Home from './pages/Home';
-import Login from './pages/Login';
-import PageNotFound from './pages/PageNotFound';
+import About from './pages/About/About';
+import Home from './pages/Home/Home';
+import Login from './pages/Home/Login';
+import PageNotFound from './pages/PageNotFound/PageNotFound';
 
 
 export default class NavbarHeader extends Component {
@@ -31,8 +31,8 @@ export default class NavbarHeader extends Component {
         
       </div>
         <Routes>
-            <Route index element={<Home />} />
-            <Route path="home" element={<Home Login />} />                    
+            <Route index element={<Home isLoggedIn={false}/>} />
+            <Route path="home" element={<Home isLoggedIn={true}/>} />                    
             <Route path="about" element={<About />} />
             <Route path="login" element={<Login />} />
             <Route path="*" element={<PageNotFound />} />
