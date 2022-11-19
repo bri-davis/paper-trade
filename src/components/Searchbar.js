@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Form from 'react-bootstrap/Form';
 import { Button } from "react-bootstrap";
 
-export default function Searchbar() {
+export default function Searchbar({updateSearchResult}) {
     const [search, setSearch] = useState("");
     
       const handleChange = (event) => {
@@ -12,9 +12,8 @@ export default function Searchbar() {
     
       const handleSubmit = (event) => {
         // prevents the submit button from refreshing the page
-        console.log("something");
         event.preventDefault();
-        //addAccount(search);
+        updateSearchResult(search);
     
         console.log(search);
       };

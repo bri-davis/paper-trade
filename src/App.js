@@ -8,7 +8,8 @@ import Example from "./components/Example";
 import React, { Component, useState } from 'react';
 import NavbarHeader from "./components/NavbarHeader";
 import Searchbar from "./components/Searchbar";
-
+import StockList from "./components/StockList";
+import TradeWindow from "./components/TradeWindow";
 
 export default function App() {
 
@@ -23,7 +24,7 @@ export default function App() {
     return (
         <div className="container">
             <NavbarHeader  />
-            <Searchbar />
+            <TradeWindow />
             <Footer />
         </div>
     )
