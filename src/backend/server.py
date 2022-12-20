@@ -34,3 +34,23 @@ def createStockList():
 
     return str(table.item_count)
 
+
+@app.route('/read/', methods=['GET', 'POST'])
+def getStockList():
+    dynamodb = boto3.resource('dynamodb')
+    table = dynamodb.Table('paper-trade')
+
+    content = request.json
+
+    try:
+        response = table.get_item(
+            Key={
+                    'userId': content['username'],
+            }
+    )
+    except botocore.exceptions.ClientError as e:
+        if e.response['Error']['Code'] != 'ConditionalCheckFailedException':
+            raise Exception('Stocklist Retrieval Error')
+    else:
+        return response['Item']
+
