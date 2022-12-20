@@ -25,3 +25,4 @@ yarn-error.log*
 #backend
 /src/backend/venv
 /src/backend/__pycache__
+/src/backend/.aws
