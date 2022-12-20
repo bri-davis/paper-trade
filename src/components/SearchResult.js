@@ -71,6 +71,25 @@ export default function SearchResult({account}) {
         };
         const [stocks, setStocks] = useState([]);
 
+        function handlePrice() {
+            wait(10);
+            const data = { username: account};
+            fetch('http://127.0.0.1:5000/prices/', {
+                method: 'POST', // or 'PUT'
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+              })
+                .then((response) => response.json())
+                .then((data) => {
+                setStocks(data);
+                  console.log('Success:', data);
+                })
+                .catch((error) => {
+                  console.error('Error:', error);
+                });
+        };
     
     return (
         <div>
