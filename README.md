@@ -1,10 +1,47 @@
-# Getting Started with Create React App
+# paper-trade
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+paper-trade is an interactive React.js web application that allow users to add/remove stocks to/from a watchlist and view stock prices. It is intended for beginner investors to learn about stocks and track their stock trades.
 
-## Available Scripts
+## How to Run
 
-In the project directory, you can run:
+1. Clone the repo into your personal space:
+
+```bash
+git clone https://github.com/bri-davis/paper-trade.git
+cd paper-trade
+```
+
+2. Install the following Python packages for backend usage:
+
+```
+pip3 install boto3
+pip3 install botocore
+pip3 install flask
+pip3 install flask-cors
+pip3 install yfinance
+```
+3. Create an AWS account, then create a DynamoDB table and name it 'paper-trade'.
+
+4. In the src/backend/ folder, create .aws/credentials and enter your AWS ID and Access Key
+
+```
+[default]
+aws_access_key_id = ...
+aws_secret_access_key = ... 
+```
+5. In the src/backend/ directory, you can run the Python Flask backend using: 
+
+```
+flask run
+```
+
+6. Install the following Node packages for frontend usage:
+
+```
+npm -i react-bootstrap
+npm -i react-router-dom
+```
+7. In the project directory, you can run the frontend using:
 
 ### `npm start`
 
@@ -14,57 +51,26 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-### `npm test`
+## Tech Stack
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+[React.js](https://reactjs.org) - Frontend Development
+[Python](https://www.python.org) - Backend Development
+[Flask](https://flask.palletsprojects.com/en/2.2.x/) - Python web framework
+[AWS DynamoDB](https://aws.amazon.com/dynamodb/) - Database
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## MIT License
+This project is licensed under the MIT License - see the LICENSE.md file for details
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Future Considerations
+- Using [IEX Cloud API](https://iexcloud.io/docs/api/) over yfinance
+- Switching current schema to be entirely hosted on AWS using EC2
+- More personalized user interaction with email subcription-based lists
 
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
