@@ -2,6 +2,12 @@
 
 paper-trade is an interactive React.js web application that allow users to add/remove stocks to/from a watchlist and view stock prices. It is intended for beginner investors to learn about stocks and track their stock trades.
 
+<p align="center">
+<img src="original.png" width="400">
+<img src="update.png" width="400">
+</p>
+
+
 ## How to Run
 
 1. Clone the repo into your personal space:
