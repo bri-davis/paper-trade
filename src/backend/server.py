@@ -54,3 +54,28 @@ def getStockList():
     else:
         return response['Item']
 
+
+@app.route('/add/', methods=['GET', 'POST'])
+def add_item():
+    dynamodb = boto3.resource('dynamodb')
+    table = dynamodb.Table('paper-trade')
+
+    content = request.json
+
+    try:
+        response = table.update_item(
+            Key={
+                    'userId': content['username'],
+            },
+            UpdateExpression="SET stockList = list_append(stockList, :ticker)",
+            ExpressionAttributeValues={
+                ':ticker': [content['ticker']],
+            },
+            ReturnValues="UPDATED_NEW"
+        )
+    except botocore.exceptions.ClientError as e:
+        if e.response['Error']['Code'] != 'ConditionalCheckFailedException':
+            raise Exception('Stocklist Update Error')
+    else:
+        return response['Attributes']
+
