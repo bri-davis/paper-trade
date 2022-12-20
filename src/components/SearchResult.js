@@ -1,35 +1,47 @@
+import { wait } from "@testing-library/user-event/dist/utils";
 import React, { useState } from "react";
 import { Button, Form, InputGroup } from "react-bootstrap";
+import StockList from "./StockList";
 
+export default function SearchResult({account}) {
 
-export default function SearchResult({updateSearchResult}) {
-        const [quantity, setQuantity] = useState(0);
-        
+        const [search, setSearch] = useState("");
+    
         const handleChange = (event) => {
-            setQuantity(event.target.value);
-            console.log(quantity);
-        };
-        
-        const handleSubmit = (event) => {
-            // prevents the submit button from refreshing the page
-            event.preventDefault();
-            //updateTable();
-        
-            console.log(quantity);
+          setSearch(event.target.value);
+          console.log(search);
         };
 
         function handleBuy() {
-            console.log('hello world');
+            const data = { username: account, ticker: search};
+            fetch('http://127.0.0.1:5000/add/', {
+                method: 'POST', // or 'PUT'
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+              })
+                .then((response) => response.json())
+                .then((data) => {
+                  console.log('Success:', data);
+                })
+                .catch((error) => {
+                  console.error('Error:', error);
+                });
+
+                handlePrice();
         };
+    
     return (
         <div>
-        <h2>{updateSearchResult}</h2>
-
         <InputGroup className="mb-3">
-        <Form.Control aria-label="Example text with two button addons" />
-        <Button variant="success" onClick={() => handleBuy()}>Buy</Button>
-        <Button variant="danger">Sell</Button>
+        <Form.Control placeholder="Enter stock ticker" aria-label="Example text with two button addons" onChange={handleChange} value={search}/>
+        <Button variant="success" onClick={() => handleBuy()}>Add</Button>
+        <Button variant="danger" onClick={() => handleSell()}>Remove</Button>
       </InputGroup>
+        
+        <StockList stocks={stocks}/>
+
       </div>
     )
 }
