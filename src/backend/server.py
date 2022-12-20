@@ -106,3 +106,24 @@ def remove_item():
             raise Exception('Stocklist Update-Remove Error')
     else:
         return response['Attributes']
+
+@app.route('/prices/', methods=['GET', 'POST'])
+def view_prices():
+    dynamodb = boto3.resource('dynamodb')
+    table = dynamodb.Table('paper-trade')
+
+    content = request.json
+
+    try:
+        response = table.get_item(
+            Key={
+                    'userId': content['username'],
+            }
+    )
+    except botocore.exceptions.ClientError as e:
+        if e.response['Error']['Code'] != 'ConditionalCheckFailedException':
+            raise Exception('Stocklist Retrieval Error')
+    else:
+        stock_prices = [yf.Ticker(ticker).info['regularMarketPrice'] for ticker in response['Item']['stockList']]
+        data = [{"Ticker": ticker, "Price": price} for ticker, price in zip(response['Item']['stockList'], stock_prices)]
+        return json.dumps(data)
