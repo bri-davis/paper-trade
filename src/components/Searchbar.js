@@ -14,7 +14,6 @@ export default function Searchbar({updateSearchResult}) {
         // prevents the submit button from refreshing the page
         event.preventDefault();
         updateSearchResult(search);
-    
         console.log(search);
       };
     return (

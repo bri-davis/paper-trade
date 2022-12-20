@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route, Link, Outlet} from 'react-router-dom';
 import Home from './Home';
 import About from '../About/About';
 import PageNotFound from "../PageNotFound/PageNotFound";
-import Example from "../../Example";
 
 
 export default function Main() {
@@ -14,9 +13,15 @@ export default function Main() {
       console.log(accounts)
   
     };
+
+    const [account, setAccount] = useState("");
+    
+    const handleChange = (event) => {
+      setAccount(event.target.value);
+      console.log(account);
+    };
       return (
           <div className="container">
-              <Example addAccount={addAccount}/>
           </div>
       )
 }
