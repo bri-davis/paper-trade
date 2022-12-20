@@ -79,3 +79,30 @@ def add_item():
     else:
         return response['Attributes']
 
+
+@app.route('/remove/', methods=['GET', 'POST'])
+def remove_item():
+    dynamodb = boto3.resource('dynamodb')
+    table = dynamodb.Table('paper-trade')
+
+    content = request.json
+
+    try:
+        stocklist = table.get_item(
+            Key={
+                    'userId': content['username'],
+            }
+        )
+        ind = stocklist['Item']['stockList'].index(content['ticker'])
+        response = table.update_item(
+            Key={
+                    'userId': content['username'],
+            },
+            UpdateExpression="REMOVE stockList[{}]".format(ind),
+            ReturnValues="ALL_NEW"
+        )
+    except botocore.exceptions.ClientError as e:
+        if e.response['Error']['Code'] != 'ConditionalCheckFailedException':
+            raise Exception('Stocklist Update-Remove Error')
+    else:
+        return response['Attributes']
