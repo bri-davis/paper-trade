@@ -3,8 +3,8 @@
 paper-trade is an interactive React.js web application that allow users to add/remove stocks to/from a watchlist and view stock prices. It is intended for beginner investors to learn about stocks and track their stock trades.
 
 <p align="center">
-<img src="original.png" width="400">
-<img src="update.png" width="400">
+<img src="original.png" width="200">
+<img src="update.png" width="200">
 </p>
 
 
@@ -59,10 +59,10 @@ You may also see any lint errors in the console.
 
 ## Tech Stack
 
-[React.js](https://reactjs.org) - Frontend Development
-[Python](https://www.python.org) - Backend Development
-[Flask](https://flask.palletsprojects.com/en/2.2.x/) - Python web framework
-[AWS DynamoDB](https://aws.amazon.com/dynamodb/) - Database
+- [React.js](https://reactjs.org) - Frontend Development
+- [Python](https://www.python.org) - Backend Development
+- [Flask](https://flask.palletsprojects.com/en/2.2.x/) - Python web framework
+- [AWS DynamoDB](https://aws.amazon.com/dynamodb/) - Database
 
 
 ## MIT License
